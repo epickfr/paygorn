@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Notes - Windows XP Edition</title>
+  <title>My Notes - Read Only (XP Style)</title>
   <style>
     :root {
       --xp-blue: #0a246a;
@@ -14,207 +14,174 @@
       --xp-highlight: #ffffff;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      height: 100vh;
+      height:100vh;
       font-family: "Tahoma", "Segoe UI", sans-serif;
-      background: #008080;
-      color: #000;
-      overflow: hidden;
-      image-rendering: pixelated; /* helps with that retro cursor feeling */
+      background:#008080;
+      color:#000;
+      overflow:hidden;
     }
 
     .desktop {
-      height: 100%;
-      background: url('https://images.alphacoders.com/115/115346.jpg') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      flex-direction: column;
+      height:100%;
+      background:url('https://images.alphacoders.com/115/115346.jpg') center/cover no-repeat;
+      position:relative;
+      display:flex;
+      flex-direction:column;
     }
 
     .window {
-      position: absolute;
-      top: 60px;
-      left: 80px;
-      width: 860px;
-      height: 580px;
-      background: var(--xp-gray);
-      border: 2px solid #000;
-      box-shadow: 
-        4px 4px 0 #fff,
-        -2px -2px 0 #808080;
-      display: flex;
-      flex-direction: column;
-      resize: both;
-      overflow: hidden;
-      min-width: 420px;
-      min-height: 300px;
+      position:absolute;
+      top:60px;
+      left:80px;
+      width:860px;
+      height:580px;
+      background:var(--xp-gray);
+      border:2px solid #000;
+      box-shadow: 4px 4px 0 #fff, -2px -2px 0 #808080;
+      display:flex;
+      flex-direction:column;
+      resize:both;
+      overflow:hidden;
+      min-width:420px;
+      min-height:300px;
     }
 
     .title-bar {
-      height: 28px;
-      background: var(--xp-title-active);
-      color: white;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      user-select: none;
-      border-bottom: 1px solid #000;
+      height:28px;
+      background:var(--xp-title-active);
+      color:white;
+      font-weight:bold;
+      display:flex;
+      align-items:center;
+      padding:0 8px;
+      user-select:none;
+      border-bottom:1px solid #000;
     }
 
     .title-bar-buttons {
-      margin-left: auto;
-      display: flex;
-      gap: 2px;
+      margin-left:auto;
+      display:flex;
+      gap:2px;
     }
 
     .btn-win {
-      width: 22px;
-      height: 20px;
-      background: var(--xp-gray);
-      border: 1px solid #000;
-      border-top-color: #fff;
-      border-left-color: #fff;
-      box-shadow: inset -1px -1px #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      line-height: 1;
-      cursor: default;
+      width:22px;
+      height:20px;
+      background:var(--xp-gray);
+      border:1px solid #000;
+      border-top-color:#fff;
+      border-left-color:#fff;
+      box-shadow:inset -1px -1px #000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:10px;
+      cursor:default;
     }
 
-    .btn-win:hover {
-      background: #c0c0c0;
-    }
-
+    .btn-win:hover { background:#c0c0c0; }
     .btn-close {
-      background: #c0c0c0 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><line x1="1" y1="1" x2="9" y2="9" stroke="black" stroke-width="2"/><line x1="9" y1="1" x2="1" y2="9" stroke="black" stroke-width="2"/></svg>') center no-repeat;
+      background:#c0c0c0 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><line x1="1" y1="1" x2="9" y2="9" stroke="black" stroke-width="2"/><line x1="9" y1="1" x2="1" y2="9" stroke="black" stroke-width="2"/></svg>') center no-repeat;
     }
 
     .toolbar {
-      height: 32px;
-      background: var(--xp-gray);
-      border-bottom: 1px solid #808080;
-      display: flex;
-      align-items: center;
-      padding: 0 4px;
-      gap: 6px;
-      font-size: 11px;
+      height:32px;
+      background:var(--xp-gray);
+      border-bottom:1px solid #808080;
+      display:flex;
+      align-items:center;
+      padding:0 4px;
+      gap:6px;
+      font-size:11px;
     }
 
     .main-area {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
+      flex:1;
+      display:flex;
+      overflow:hidden;
     }
 
     .sidebar {
-      width: 220px;
-      background: white;
-      border-right: 1px solid #808080;
-      overflow-y: auto;
-      padding: 4px;
+      width:220px;
+      background:white;
+      border-right:1px solid #808080;
+      overflow-y:auto;
+      padding:4px;
     }
 
     .folder {
-      padding: 3px 6px;
-      cursor: pointer;
-      user-select: none;
-      border-radius: 3px;
+      padding:3px 6px;
+      cursor:pointer;
+      user-select:none;
+      border-radius:3px;
     }
 
-    .folder:hover {
-      background: #d0e8ff;
-    }
-
-    .folder.active {
-      background: #a6d0ff;
-      font-weight: bold;
-    }
-
-    .folder::before {
-      content: "📁 ";
-      margin-right: 4px;
-    }
+    .folder:hover      { background:#d0e8ff; }
+    .folder.active     { background:#a6d0ff; font-weight:bold; }
+    .folder::before    { content:"📁 "; margin-right:4px; }
 
     .note-list {
-      flex: 1;
-      background: white;
-      overflow-y: auto;
-      padding: 6px;
+      flex:1;
+      background:white;
+      overflow-y:auto;
+      padding:6px;
     }
 
     .note-item {
-      padding: 8px 10px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-      transition: background 0.12s;
+      padding:8px 10px;
+      border-bottom:1px solid #eee;
+      cursor:pointer;
+      transition:background 0.12s;
     }
 
-    .note-item:hover {
-      background: #f0f8ff;
+    .note-item:hover   { background:#f0f8ff; }
+    .note-item.active  { background:#cce5ff; }
+
+    .viewer-area {
+      flex:2;
+      background:#fff;
+      display:flex;
+      flex-direction:column;
+      padding:12px;
+      overflow:auto;
     }
 
-    .note-item.active {
-      background: #cce5ff;
+    #note-title-display {
+      font-size:16px;
+      font-weight:bold;
+      margin-bottom:12px;
+      padding-bottom:8px;
+      border-bottom:1px solid #ccc;
     }
 
-    .editor-area {
-      flex: 2;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #note-title {
-      padding: 8px 12px;
-      font-size: 14px;
-      font-weight: bold;
-      border: none;
-      border-bottom: 1px solid #ccc;
-      outline: none;
-      background: #f8f8f8;
-    }
-
-    #note-content {
-      flex: 1;
-      padding: 12px;
-      font-size: 13px;
-      line-height: 1.45;
-      border: none;
-      outline: none;
-      resize: none;
-      background: white;
-      font-family: "Tahoma", sans-serif;
+    #note-content-display {
+      white-space:pre-wrap;
+      font-size:13px;
+      line-height:1.5;
+      font-family:"Tahoma", sans-serif;
     }
 
     .status-bar {
-      height: 22px;
-      background: var(--xp-gray);
-      border-top: 1px solid #808080;
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      color: #000;
+      height:22px;
+      background:var(--xp-gray);
+      border-top:1px solid #808080;
+      font-size:11px;
+      display:flex;
+      align-items:center;
+      padding:0 8px;
+      color:#000;
     }
   </style>
 </head>
 <body>
 
 <div class="desktop">
-
   <div class="window" id="mainWindow">
 
     <div class="title-bar">
-      <span>My Notes</span>
+      <span>Notes Viewer - Read Only</span>
       <div class="title-bar-buttons">
         <div class="btn-win">_</div>
         <div class="btn-win">□</div>
@@ -223,61 +190,41 @@
     </div>
 
     <div class="toolbar">
-      File  Edit  View  Insert  Format  Tools  Help
+      File  Edit  View  Help
     </div>
 
     <div class="main-area">
 
-      <div class="sidebar" id="folderList">
-        <!-- Folders added here via JS -->
-      </div>
+      <div class="sidebar" id="folderList"></div>
 
-      <div class="note-list" id="noteList">
-        <!-- Notes added here -->
-      </div>
+      <div class="note-list" id="noteList"></div>
 
-      <div class="editor-area">
-        <input type="text" id="note-title" placeholder="Untitled Note" spellcheck="true"/>
-        <textarea id="note-content" placeholder="Start typing your note here..."></textarea>
+      <div class="viewer-area">
+        <div id="note-title-display">Select a note</div>
+        <div id="note-content-display">Nothing selected yet...</div>
       </div>
 
     </div>
 
     <div class="status-bar">
-      <span id="status">Ready | 0 notes selected</span>
+      <span id="status">Read-only mode | Select folder and note to view</span>
     </div>
 
   </div>
-
 </div>
 
 <script>
 // ────────────────────────────────────────────────
-let currentFolder = "Home";
-let folders = {
+//     ALL CONTENT LIVES HERE — edit only in code
+// ────────────────────────────────────────────────
+const folders = {
   "Home": [
-    { id: 1, title: "Shopping list", content: "Milk\nEggs\nBread\nCoffee", date: "2025-11-12" },
-    { id: 2, title: "Ideas for game", content: "Pixel art horror\nRoguelike cooking", date: "2025-12-03" }
+    { id:1, title: "Silto's secrets", content: "Silto has a thing for hitler", date:"2026-03-2" }
   ],
-  "Work": [
-    { id: 3, title: "Meeting notes 03/25", content: "Client wants blue instead of green", date: "2026-03-01" }
-  ],
-  "Random": []
 };
 
+let currentFolder = "Home";
 let currentNoteId = null;
-
-// ────────────────────────────────────────────────
-function saveData() {
-  localStorage.setItem("xp-notes-folders", JSON.stringify(folders));
-}
-
-function loadData() {
-  const saved = localStorage.getItem("xp-notes-folders");
-  if (saved) {
-    folders = JSON.parse(saved);
-  }
-}
 
 // ────────────────────────────────────────────────
 function renderFolders() {
@@ -294,7 +241,7 @@ function renderFolders() {
       currentNoteId = null;
       renderFolders();
       renderNotes();
-      clearEditor();
+      showNote(null);
     };
     container.appendChild(div);
   });
@@ -309,14 +256,23 @@ function renderNotes() {
     div.className = "note-item";
     if (note.id === currentNoteId) div.classList.add("active");
     div.innerHTML = `<div>${note.title}</div><small>${note.date}</small>`;
-    div.onclick = () => loadNote(note.id);
+    div.onclick = () => showNote(note.id);
     container.appendChild(div);
   });
 }
 
-function loadNote(id) {
+function showNote(id) {
   currentNoteId = id;
   renderNotes();
+
+  const titleEl   = document.getElementById("note-title-display");
+  const contentEl = document.getElementById("note-content-display");
+
+  if (!id) {
+    titleEl.textContent = "Select a note";
+    contentEl.textContent = "Nothing selected yet...";
+    return;
+  }
 
   let note = null;
   for (let f of Object.values(folders)) {
@@ -325,70 +281,19 @@ function loadNote(id) {
   }
 
   if (note) {
-    document.getElementById("note-title").value = note.title;
-    document.getElementById("note-content").value = note.content;
+    titleEl.textContent   = note.title;
+    contentEl.textContent = note.content;
+    document.getElementById("status").textContent =
+      `Viewing: ${note.title}  •  Last modified: ${note.date}`;
   }
 }
-
-function clearEditor() {
-  document.getElementById("note-title").value = "";
-  document.getElementById("note-content").value = "";
-  currentNoteId = null;
-  renderNotes();
-}
-
-function saveCurrentNote() {
-  const titleEl = document.getElementById("note-title");
-  const contentEl = document.getElementById("note-content");
-
-  const title = titleEl.value.trim() || "Untitled Note";
-  const content = contentEl.value;
-
-  if (!currentNoteId) {
-    // New note
-    const newId = Date.now();
-    folders[currentFolder].push({
-      id: newId,
-      title,
-      content,
-      date: new Date().toISOString().slice(0,10)
-    });
-    currentNoteId = newId;
-  } else {
-    // Update existing
-    let note;
-    for (let f of Object.values(folders)) {
-      note = f.find(n => n.id === currentNoteId);
-      if (note) {
-        note.title = title;
-        note.content = content;
-        note.date = new Date().toISOString().slice(0,10);
-        break;
-      }
-    }
-  }
-
-  saveData();
-  renderNotes();
-  document.getElementById("status").textContent = `Saved • ${title}`;
-}
-
-// Auto-save on change (debounced)
-let saveTimeout;
-function debounceSave() {
-  clearTimeout(saveTimeout);
-  saveTimeout = setTimeout(saveCurrentNote, 1200);
-}
-
-document.getElementById("note-title").addEventListener("input", debounceSave);
-document.getElementById("note-content").addEventListener("input", debounceSave);
 
 // ────────────────────────────────────────────────
-loadData();
 renderFolders();
 renderNotes();
+showNote(null);   // start with nothing selected
 
-// Make window draggable (very basic)
+// Make window draggable
 const titleBar = document.querySelector(".title-bar");
 const windowEl = document.getElementById("mainWindow");
 
@@ -400,7 +305,6 @@ titleBar.addEventListener("mousedown", e => {
   isDragging = true;
   startX = e.clientX - windowEl.offsetLeft;
   startY = e.clientY - windowEl.offsetTop;
-  titleBar.style.cursor = "move";
 });
 
 document.addEventListener("mousemove", e => {
@@ -411,7 +315,6 @@ document.addEventListener("mousemove", e => {
 
 document.addEventListener("mouseup", () => {
   isDragging = false;
-  titleBar.style.cursor = "default";
 });
 
 </script>
